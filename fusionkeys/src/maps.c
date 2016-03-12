@@ -23,7 +23,7 @@ void map_free() {
     map_init();
 }
 
-inline const int map_hash(char key) {
+inline int map_hash(char key) {
     return ((int) key) % MAPHASH_SIZE;
 }
 
@@ -51,4 +51,12 @@ int map_put(char key, int new_act) {
     return 0;
     error:
         return 1;
+}
+
+int map_get(char key) {
+    mapblock_T *map;
+    for (map = maphash[map_hash(key)]; map; map = map->next) {
+        if (map->key == key) return map->act;
+    }
+    return 0;
 }

@@ -23,8 +23,10 @@ struct mapblock {
 
 
 void map_init();
+void map_free();
 bool map_has(char);
 int map_put(char, int);
+int map_get(char);
 
 #ifdef __cplusplus
 }
