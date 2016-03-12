@@ -24,6 +24,7 @@ struct mapblock {
 
 void map_init();
 bool map_has(char);
+int map_put(char, int);
 
 #ifdef __cplusplus
 }
