@@ -3,8 +3,8 @@
 #define MINUNIT_H
 
 #include <stdio.h>
-#include <dbg.h>
 #include <stdlib.h>
+#include "../src/dbg.h"
 
 #define mu_suite_start() char *message = NULL
 

@@ -6,7 +6,7 @@ SOURCES=$(wildcard src/**/*.c src/*.c)
 OBJECTS=$(patsubst %.c,%.o,$(SOURCES))
 
 TEST_SRC=$(wildcard tests/*_tests.c)
-TESTS=$(patsubst %.c,%,$(TEST_SRC))
+TESTS=$(patsubst %.c,%.test,$(TEST_SRC))
 
 TARGET=build/libfusion_keys.a
 SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
@@ -15,8 +15,7 @@ POC_SRC=src/main.c
 POC=build/main
 
 
-all: $(TARGET) $(SO_TARGET) $(POC)
-#all: $(TARGET) $(SO_TARGET) tests
+all: $(TARGET) $(SO_TARGET) $(POC) tests
 
 dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)
 dev: all
@@ -33,8 +32,14 @@ build:
 	@mkdir -p build
 	@mkdir -p bin
 
-.PHONY: tests
-tests: CFLAGS += $(TARGET)
+%.test: %.c
+	$(CC) -o $@ $< -Lbuild -lfusion_keys
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: tests run
+#tests: CFLAGS += #$(TARGET)
 tests: $(TESTS)
 	sh ./tests/runtests.sh
 
