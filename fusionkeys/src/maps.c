@@ -60,3 +60,17 @@ int map_get(char key) {
     }
     return 0;
 }
+
+int map_delete(char key) {
+    mapblock_T **map;
+    mapblock_T *old_map;
+    for (map = &maphash[map_hash(key)]; *map; *map = (*map)->next) {
+        if ((*map)->key == key) {
+            old_map = *map;
+            *map = ((*map)->next);
+            free(old_map);
+            return 0;
+        }
+    }
+    return -1;
+}

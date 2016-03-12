@@ -27,6 +27,7 @@ void map_free();
 bool map_has(char);
 int map_put(char, int);
 int map_get(char);
+int map_delete(char);
 
 #ifdef __cplusplus
 }
