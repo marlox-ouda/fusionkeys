@@ -6,9 +6,9 @@ extern "C" {
 #endif
 
 void
-add_bind(struct hsearch_data *, char, long);
+add_bind(struct hsearch_data *, char, enum action);
 
-long
+enum action
 lookfor_key(struct hsearch_data *, char);
 
 ssize_t

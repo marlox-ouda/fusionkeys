@@ -1,5 +1,5 @@
-#ifndef CMAPS_H
-#define CMAPS_H
+#ifndef CHASH_TABLE_H
+#define CHASH_TABLE_H
 
 #ifdef __cplusplus
 extern "C" {

@@ -8,20 +8,20 @@
 #define BASIC_LEN 200
 
 void
-add_bind(struct hsearch_data * table, char binded_key, long action)
+add_bind(struct hsearch_data * table, char binded_key, enum action action)
 {
     char * entry_key = malloc(2 * sizeof(char));
     entry_key[0] = binded_key;
     entry_key[1] = '\0';
-    hash_put_element(table, entry_key, (void *) action);
+    hash_put_element(table, entry_key, (void *)(long) action);
 }
 
-long
+enum action
 lookfor_key(struct hsearch_data * table, char key)
 {
     char entry_key[] = "\0\0";
     entry_key[0] = key;
-    return (long)hash_get_element(table, entry_key);
+    return (enum action)(long)hash_get_element(table, entry_key);
 }
 
 ssize_t

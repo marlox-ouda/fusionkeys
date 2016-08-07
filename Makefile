@@ -14,6 +14,8 @@ SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
 POC_SRC=src/main.c
 POC=build/main
 
+VALGRIND=
+
 
 all: $(TARGET) $(SO_TARGET) $(POC) tests
 
@@ -66,4 +68,4 @@ $(POC): $(TARGET) $(POC_SRC)
 
 run: $(POC)
 	@echo "------ Next is the running program ------"
-	@LD_LIBRARY_PATH=build ./build/main
+	@LD_LIBRARY_PATH=build ${VALGRIND} ./build/main
