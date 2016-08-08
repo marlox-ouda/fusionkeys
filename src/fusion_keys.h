@@ -1,14 +1,14 @@
 #ifndef CFUSION_H
 #define CFUSION_H
 
+//#define _GNU_SOURCE
+#include "actions.h"
+#include "hash_table.h"
+#include <stdlib.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "actions.h"
-#include "hash_table.h"
-#define _GNU_SOURCE
-//#include <stdlib.h>
 
 struct fusion {
      struct actions_db * actions_db;

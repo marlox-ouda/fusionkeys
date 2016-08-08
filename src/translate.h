@@ -2,7 +2,7 @@
 #define CTRANSLATE_H
 
 #ifdef __cplusplus
-extern "C" {
+//extern "C" {
 #endif
 
 void
@@ -16,7 +16,7 @@ translate(struct hsearch_data *, char *, enum action **, size_t);
 
 
 #ifdef __cplusplus
-}
+//}
 #endif
 
 #endif

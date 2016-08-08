@@ -2,7 +2,7 @@
 #define CHASH_TABLE_H
 
 #ifdef __cplusplus
-extern "C" {
+//extern "C" {
 #endif
 
 #define _GNU_SOURCE
@@ -32,7 +32,7 @@ void
 hash_destroy(struct hsearch_data *);
 
 #ifdef __cplusplus
-}
+//}
 #endif
 
 #endif

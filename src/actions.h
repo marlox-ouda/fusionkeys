@@ -2,7 +2,7 @@
 #define CACTIONS_H
 
 #ifdef __cplusplus
-extern "C" {
+//extern "C" {
 #endif
 
 enum action
@@ -28,7 +28,7 @@ char *
 action_get_label(struct actions_db * ,enum action);
 
 #ifdef __cplusplus
-}
+//}
 #endif
 
 #endif
