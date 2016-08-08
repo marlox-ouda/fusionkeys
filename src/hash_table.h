@@ -11,7 +11,7 @@ extern "C" {
 #include <search.h>
 
 //#define BASIC_LEN 200
-#define NIL (void *)(-1L)
+#define NIL (void *)(-1)
 
 struct hsearch_data *
 hash_create(ssize_t);

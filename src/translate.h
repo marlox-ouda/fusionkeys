@@ -12,7 +12,7 @@ enum action
 lookfor_key(struct hsearch_data *, char);
 
 ssize_t
-translate(struct actions_db *, struct hsearch_data *, char *, size_t);
+translate(struct hsearch_data *, char *, enum action **, size_t);
 
 
 #ifdef __cplusplus

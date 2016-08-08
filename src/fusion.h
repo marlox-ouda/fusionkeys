@@ -21,8 +21,11 @@ fk_init();
 void
 fk_bind(struct fusion *, char, enum action);
 
+ssize_t
+fk_translate(struct fusion *, char *, enum action **, size_t);
+
 void
-fk_translate(struct fusion *, char *, size_t);
+fk_display_actions(struct fusion *, enum action *, size_t);
 
 void
 fk_exit(struct fusion *);

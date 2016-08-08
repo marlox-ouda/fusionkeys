@@ -8,4 +8,5 @@ KEY(A_ZOOM_OUT,  6)
 
 //
 KEY(A_PLAY,      7)
-KEY(A_TOGGLE,    8)
+KEY(A_STOP,      8)
+KEY(A_TOGGLE,    9)

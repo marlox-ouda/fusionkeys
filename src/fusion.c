@@ -27,10 +27,22 @@ fk_bind(struct fusion * fusion, char key, enum action action)
     add_bind(fusion->translation_table, key, action);
 }
 
-void
-fk_translate(struct fusion * fusion, char * buffer, size_t size)
+ssize_t
+fk_translate(struct fusion * fusion, char * buffer, enum action ** actions, size_t size)
 {
-    translate(fusion->actions_db, fusion->translation_table, buffer, size);
+    return translate(fusion->translation_table, buffer, actions, size);
+}
+
+void
+fk_display_actions(struct fusion * fusion, enum action * actions, size_t size)
+{
+    char * label;
+    for (size_t index = 0; index < size; ++index)
+      {
+        label = action_get_label(fusion->actions_db, actions[index]);
+        if (label) printf("%s\n", label);
+        else printf("????\n");
+      }
 }
 
 void
