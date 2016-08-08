@@ -22,7 +22,11 @@ action_key(int index)
 void
 actions_add_label(struct hsearch_data * labels_db, int index, char label[])
 {
+    check(labels_db, "labels_db is NULL : fail to call actions_add_label");
+    check(label, "label is NULL : fail to call actions_add_label");
     hash_put_element(labels_db, action_key(index), strdup(label));
+    error:
+        return;
 }
 
 struct actions_db *
@@ -31,11 +35,13 @@ action_create_db()
     struct actions_db * db = malloc(sizeof(struct actions_db));
     check_mem(db);
     db->labels = hash_create(200);
+    raise(db->labels);
 #define KEY(label, valeur) actions_add_label(db->labels, valeur, #label);
 #include "actions.inc"
 #undef KEY
     return db;
     error:
+        if (db) { free(db); }
         return NULL;
 }
 
@@ -43,9 +49,11 @@ action_create_db()
 char *
 action_get_label(struct actions_db * db, enum action action)
 {
+    check(db, "db is NULL : fail to call action_get_label -> return NULL");
     char * label = hash_get_element(db->labels, action_key(action));
     if (label == (char *)NIL) {
-        return NULL;
+        error:
+            return NULL;
     }
     return label;
 }
@@ -53,6 +61,9 @@ action_get_label(struct actions_db * db, enum action action)
 void
 action_destroy_db(struct actions_db * db)
 {
+    check(db, "db is NULL : fail to call action_destroy_db");
     hash_destroy(db->labels);
     free(db);
+    error:
+        return;
 }

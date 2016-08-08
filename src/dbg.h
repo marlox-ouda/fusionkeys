@@ -28,4 +28,8 @@
 
 #define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }
 
+#define fail(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); errno=0; exit(1); }
+
+#define raise(A) if(!(A)) { goto error; }
+
 #endif

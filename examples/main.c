@@ -1,6 +1,6 @@
 #include <unistd.h>
-#include "fusion.h"
-#include "dbg.h"
+#include "../src/fusion_keys.h"
+#include "../src/dbg.h"
 
 #define BUF_MAX_SIZE 256
 
@@ -8,6 +8,7 @@ int
 main(void)
 {
     struct fusion * fusion = fk_init();
+    raise(fusion);
     enum action * actions = NULL;
 
     char buf[BUF_MAX_SIZE];

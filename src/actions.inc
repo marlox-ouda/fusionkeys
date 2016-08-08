@@ -1,3 +1,5 @@
+// Reserved
+KEY(A_NIL,       0)
 // Spatial
 KEY(A_UP,        1)
 KEY(A_DOWN,      2)

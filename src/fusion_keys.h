@@ -15,19 +15,19 @@ struct fusion {
      struct hsearch_data * translation_table;
 };
 
-struct fusion *
+extern struct fusion *
 fk_init();
 
-void
+extern void
 fk_bind(struct fusion *, char, enum action);
 
-ssize_t
+extern ssize_t
 fk_translate(struct fusion *, char *, enum action **, size_t);
 
-void
+extern void
 fk_display_actions(struct fusion *, enum action *, size_t);
 
-void
+extern void
 fk_exit(struct fusion *);
 
 #ifdef __cplusplus

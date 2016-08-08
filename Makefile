@@ -11,7 +11,7 @@ TESTS=$(patsubst %.c,%.test,$(TEST_SRC))
 TARGET=build/libfusion_keys.a
 SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
 
-POC_SRC=src/main.c
+POC_SRC=examples/main.c
 POC=build/main
 
 VALGRIND=
@@ -64,7 +64,7 @@ check:
 	@egrep $(BADFUNCS) $(SOURCES) || true
 
 $(POC): $(TARGET) $(POC_SRC)
-	$(CC) $(POC_SRC) -o $(POC) -Lbuild -lfusion_keys
+	@LD_LIBRARY_PATH=build $(CC) $(POC_SRC) -o $(POC) -Lbuild -lfusion_keys
 
 run: $(POC)
 	@echo "------ Next is the running program ------"
